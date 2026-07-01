@@ -1,0 +1,71 @@
+theme="ayu_custom"
+
+[editor]
+atomic-save = false
+line-number = "relative"
+bufferline = "multiple"
+auto-format = true
+color-modes = true
+end-of-line-diagnostics = "hint"
+true-color = true
+
+[editor.inline-diagnostics]
+# Minimum severity to show a diagnostic on the primary cursor's line.
+# Note that `cursor-line` diagnostics are hidden in insert mode.
+cursor-line = "error"
+# Minimum severity to show a diagnostic on other lines:
+# other-lines = "error"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.whitespace]
+render = "none"
+
+[editor.file-picker]
+hidden = false
+
+[editor.lsp]
+display-inlay-hints = true
+
+[keys.normal]
+"A-x" = ":streal-open"
+"A-minus" = "switch_to_lowercase"
+"A-+" = "switch_to_uppercase"
+"A-s" = ":write-all"
+
+"A-c" = ":sh /usr/bin/set-clipboard '%{buffer_name}:%{cursor_line}'"
+
+"A-e" = "half_page_up"
+"A-d" = "half_page_down"
+"A-y" = ":buffer-close"
+"A-w" = ":buffer-next"
+"A-q" = ":buffer-previous"
+"A-f" = "search"
+"A-up" = ["delete_selection", "move_visual_line_up", "paste_before"]
+"A-down" = ["delete_selection", "move_visual_line_down", "paste_before"]
+"A-g" = ["jump_backward"]
+"A-b" = ["jump_forward"]
+"A-l" = ["add_newline_below", "move_visual_line_down", "paste_before"]
+"X" = ["extend_line_up", "extend_to_line_bounds"]
+
+"C-A-[" = { d = "goto_prev_diag", D = "goto_first_diag", f = "goto_prev_function", c = "goto_prev_class", a = "goto_prev_parameter", o = "goto_prev_comment", p = "goto_prev_paragraph", space = "add_newline_above" }
+"C-A-]" = { d = "goto_next_diag", D = "goto_last_diag", f = "goto_next_function", c = "goto_next_class", a = "goto_next_parameter", o = "goto_next_comment", t = "goto_next_test", p = "goto_next_paragraph", space = "add_newline_below" }
+
+[keys.normal.space]
+"H" = ":toggle lsp.display-inlay-hints"
+"f" = "file_picker_in_current_directory"
+"F" = "file_picker"
+"D" = "diagnostics_picker"
+"d" = "workspace_diagnostics_picker"
+"U" = ":insert-output random uuid"
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
+
