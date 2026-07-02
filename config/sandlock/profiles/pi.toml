@@ -1,0 +1,14 @@
+[program]
+exec = "pi"
+
+[limits]
+processes = 4294967295
+
+[filesystem]
+read = ["/usr", "/lib", "/bin", "/sbin", "/etc", "/proc", "/dev", "/var", "/run", "/opt"]
+write = ["/tmp", "/home/ubuntu", "/dev/null"]
+deny = [
+]
+
+[network]
+allow = [":*", "udp://*:*"]

@@ -1,0 +1,29 @@
+[language-server.roslyn-language-server]
+command = "roslyn-language-server"
+args = ["--stdio", "--autoLoadProjects"]
+
+[[language]]
+name = "c-sharp"
+language-servers = ["roslyn-language-server"]
+
+[language-server.angular]
+command = "ngserver"
+
+args = [
+  "--stdio",
+  "--tsProbeLocations",
+  "/usr/lib/node_modules/@angular/language-server/",
+  "--ngProbeLocations",
+  "/usr/lib/node_modules/@angular/language-server/",
+]
+
+
+[[language]]
+name ="html"
+roots = ["angular.json"]
+language-servers = ["angular","vscode-html-language-server"]
+
+[[language]]
+name = "typescript"
+roots = ["tsconfig.json"]
+language-servers = ["angular","typescript-language-server"]

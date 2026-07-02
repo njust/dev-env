@@ -1,0 +1,13 @@
+services:
+ dev-env:
+   image: pi-dev-env
+   container_name: dev-env
+   cap_add:
+     - SYS_PTRACE
+   security_opt:
+     - seccomp=unconfined
+   volumes:
+     - ./config/:/home/ubuntu/.config/
+     - ./gitconfig:/home/ubuntu/.gitconfig
+   stdin_open: true
+   tty: true

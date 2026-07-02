@@ -20,3 +20,8 @@
 $env.config.show_banner = false
 $env.config.ls.use_ls_colors = false
 $env.EDITOR = '/home/ubuntu/.cargo/bin/hx'
+
+def pi [] {
+	sandlock run -p pi
+}
+
