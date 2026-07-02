@@ -38,7 +38,7 @@ WORKDIR /tmp
 RUN case "$TARGETARCH" in \
   amd64) wget -q https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-x86_64-unknown-linux-musl.tar.gz -O nu-musl.tar.gz \
          && tar xzf nu-musl.tar.gz \
-         && sudo cp nu-0.113.1-x86_64-unknown-linux-musl.tar.gz/nu /usr/local/bin/nu ;; \
+         && sudo cp nu-0.113.1-x86_64-unknown-linux-musl/nu /usr/local/bin/nu ;; \
   arm64) wget -q https://github.com/nushell/nushell/releases/download/0.113.1/nu-0.113.1-aarch64-unknown-linux-musl.tar.gz -O nu-musl.tar.gz \
          && tar xzf nu-musl.tar.gz \
          && sudo cp nu-0.113.1-aarch64-unknown-linux-musl/nu /usr/local/bin/nu ;; \
