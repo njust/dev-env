@@ -34,8 +34,9 @@ RUN mkdir -p /home/ubuntu/.local/share/steel
 RUN forge pkg install --git https://github.com/njust/streal.hx.git
 RUN forge pkg install --git https://github.com/thomasschafer/scooter.hx.git
 
-RUN mkdir -p /home/ubuntu/.config/helix/
-RUN mv /tmp/helix/runtime/ /home/ubuntu/.config/helix/
+ENV HELIX_RUNTIME=/usr/lib/helix/runtime
+RUN sudo mkdir -p /usr/lib/helix
+RUN sudo mv /tmp/helix/runtime/ /usr/lib/helix/
 
 WORKDIR /tmp
 
@@ -108,15 +109,10 @@ RUN curl -fsSL 'https://azurecliprod.blob.core.windows.net/$root/deb_install.sh'
 
 # Config
 ENV PI_CODING_AGENT_DIR="/home/ubuntu/.config/pi"
-COPY --chown=ubuntu:ubuntu config/pi /home/ubuntu/.config/pi/
-COPY --chown=ubuntu:ubuntu config/zellij /home/ubuntu/.config/zellij/
-COPY --chown=ubuntu:ubuntu config/nushell /home/ubuntu/.config/nushell/
-COPY --chown=ubuntu:ubuntu config/helix /home/ubuntu/.config/helix/
-COPY --chown=ubuntu:ubuntu config/sandlock /home/ubuntu/.config/sandlock
-COPY --chown=ubuntu:ubuntu gitconfig /home/ubuntu/.gitconfig
 COPY tools/ /usr/bin/
 
+# Clean tmp dir
 RUN sudo rm * -r
-WORKDIR /home/ubuntu
 
+WORKDIR /home/ubuntu
 CMD ["/home/ubuntu/.cargo/bin/zellij"]

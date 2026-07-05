@@ -1,6 +1,6 @@
 services:
  dev-env:
-   image: pi-dev-env
+   image: ghcr.io/njust/dev-env:latest
    container_name: dev-env
    cap_add:
      - SYS_PTRACE
